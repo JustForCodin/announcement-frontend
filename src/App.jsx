@@ -3,9 +3,9 @@ import { apiService } from "./services/announcementApiService";
 import AnnouncementsList from "./components/AnnouncementsList";
 import AnnouncementDetails from "./components/AnnouncementDetails";
 import AnnouncementForm from "./components/AnnouncementForm";
-import { Button } from "./components/shared/Button";
-import { Card } from "./components/shared/Card";
-import { Spinner } from "./components/shared/Spinner";
+import Button from "./components/shared/Button";
+import Card from "./components/shared/Card";
+import Spinner from "./components/shared/Spinner";
 import './App.css';
 
 export default function App() {
@@ -45,7 +45,7 @@ export default function App() {
         setSelectedAnnouncement(null);
       })
       .catch(err => {
-        console.error("Failed to save announcement:". err);
+        console.error("Failed to save announcement:", err);
         setError('Failed to save the announcement. Please try again.');
       });
   };
@@ -86,7 +86,7 @@ export default function App() {
         return <AnnouncementDetails announcementId={selectedAnnouncement.id} onBack={() => {setView('list')}}/>
       case 'create':
       case 'edit':
-        return <AnnouncementForm existingAnnouncement={existingAnnouncement} onSave={handleSave} 
+        return <AnnouncementForm existingAnnouncement={selectedAnnouncement} onSave={handleSave} 
           onCancel={()=>setView('list')} />
       case 'list':
       default:
