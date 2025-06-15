@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { apiService } from "../services/announcementApiService";
-import { Card } from "./shared/Card";
-import { Button } from "./shared/Button";
-import { Spinner } from "./shared/Spinner";
+import Card from "./shared/Card";
+import Button from "./shared/Button";
+import Spinner from "./shared/Spinner";
 
 export default function AnnouncementDetails({announcementId, onBack}) {
     const [announcement, setAnnouncement] = useState(null);
@@ -43,12 +43,12 @@ export default function AnnouncementDetails({announcementId, onBack}) {
                 <Card>
                     <h2 className="similar-announcements-title">Similar announcements</h2>
                     <ul className="similar-announcements-list">
-                        {announcement.similarAnnouncements.map(similar => {
+                        {announcement.similarAnnouncements.map(similar => (
                             <li key={similar.id} className="similar-item">
                                 <h4 className="similar-item-title">{similar.title}</h4>
                                 <p>{similar.description}</p>
                             </li>
-                        })}
+                        ))}
                     </ul>
                 </Card>
             )}

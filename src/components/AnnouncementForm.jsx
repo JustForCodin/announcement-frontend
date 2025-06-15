@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "./shared/Card";
-import { Button } from "./shared/Button";
+import Card from "./shared/Card";
+import Button from "./shared/Button";
 
 export default function AnnouncementForm({existingAnnouncement, onSave, onCancel}) {
     const [title, setTitle] = useState('');
@@ -9,8 +9,11 @@ export default function AnnouncementForm({existingAnnouncement, onSave, onCancel
 
     useEffect(() => {
         if (isEditing) {
-            setTitle(existingAnnouncement.title);
-            setDescription(existingAnnouncement.description);
+            setTitle(existingAnnouncement.title ?? '');
+            setDescription(existingAnnouncement.description ?? '');
+        } else {
+            setTitle('');
+            setDescription('');
         }
     }, [existingAnnouncement, isEditing]);
 

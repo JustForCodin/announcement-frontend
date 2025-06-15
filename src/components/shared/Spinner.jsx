@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Spinner() {
+export default function Spinner() {
     return (
         <div className="spinner-container">
             <div className="spinner"></div>

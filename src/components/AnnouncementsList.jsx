@@ -1,9 +1,9 @@
 import React from "react";
-import { Card } from "./shared/Card";
-import { Button } from "./shared/Button";
+import Card from "./shared/Card";
+import Button from "./shared/Button";
 
 export default function AnnouncementsList({announcements, onEdit, onView, onDelete}) {
-    if (!announcements.length) {
+    if (!Array.isArray(announcements) || announcements.length === 0) {
         return (
             <Card>
                 <p className="text-center">You don't have any announcements, but you can add one 😊</p>
@@ -13,7 +13,7 @@ export default function AnnouncementsList({announcements, onEdit, onView, onDele
 
     return (
         <div className="announcement-list">
-            {announcements.map(ann => {
+            {announcements.map(ann => (
                 <Card key={ann.id}>
                     <h3 className="announcement-list-title">{ann.title}</h3>
                     <p className="announcement-list-date">
@@ -23,10 +23,10 @@ export default function AnnouncementsList({announcements, onEdit, onView, onDele
                     <div className="announcement-list-actions">
                         <Button onClick={() => onView(ann.id)}>View Details</Button>
                         <Button onClick={() => onEdit(ann)} variant="secondary">Edit</Button>
-                        <Button onDelete={() => onDelete(ann.id)} variant="danger">Delete</Button>
+                        <Button onClick={() => onDelete(ann.id)} variant="danger">Delete</Button>
                     </div>
                 </Card>
-            })}
+            ))}
         </div>
     );
 }
