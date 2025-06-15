@@ -21,7 +21,7 @@ export const apiService = {
         body: JSON.stringify(announcement)
     }).then(handleResponse),
 
-    updateAnnouncement: (id, announcement) => ferch(`${API_URL}/${id}`, {
+    updateAnnouncement: (id, announcement) => fetch(`${API_URL}/${id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(announcement)
